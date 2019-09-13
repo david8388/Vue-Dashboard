@@ -32,14 +32,19 @@
                 <v-card-text>
                   <v-form>
                     <v-text-field
+                      v-model="loginForm.account"
                       prepend-icon="person"
                       name="login"
                       label="Login"
                     ></v-text-field>
                     <v-text-field
+                      v-model="loginForm.password"
                       prepend-icon="lock"
                       name="password"
                       label="Password"
+                      :type="isPassword? 'Password': ''"
+                      :append-icon="isPassword? 'visibility': 'visibility_off'"
+                      @click:append="isPassword = !isPassword"
                     ></v-text-field>
                   </v-form>
                 </v-card-text>
@@ -48,6 +53,7 @@
                   <v-btn
                     color="cyan"
                     class="white--text"
+                    @click="login"
                   >Login</v-btn>
                 </v-card-actions>
               </v-tab-item>
@@ -59,21 +65,27 @@
                       prepend-icon="person"
                       name="login"
                       label="Login"
+                      v-model="registerForm.account"
                     ></v-text-field>
                     <v-text-field
                       prepend-icon="email"
                       name="email"
                       label="Email"
+                      v-model="registerForm.email"
                     ></v-text-field>
                     <v-text-field
                       prepend-icon="lock"
                       name="password"
                       label="Password"
+                      type="password"
+                      v-model="registerForm.password"
                     ></v-text-field>
                     <v-text-field
                       prepend-icon="lock"
-                      name="repeatpassword"
-                      label="Repeat Password"
+                      name="ConfirmPassword"
+                      label="Confirm Password"
+                      type="password"
+                      v-model="registerForm.confirmPassword"
                     ></v-text-field>
                   </v-form>
                 </v-card-text>
@@ -82,6 +94,7 @@
                   <v-btn
                     color="cyan"
                     class="white--text"
+                    @click="register"
                   >Register</v-btn>
                 </v-card-actions>
               </v-tab-item>
@@ -98,7 +111,28 @@ export default {
   name: 'Login',
   data () {
     return {
-      active: null
+      active: null,
+      isPassword: true,
+      loginForm: {
+        account: '',
+        password: ''
+      },
+      registerForm: {
+        account: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      }
+    }
+  },
+  methods: {
+    login () {
+      console.log('Login')
+      console.log(this.loginForm)
+    },
+    register () {
+      console.log('Register')
+      console.log(this.registerForm)
     }
   }
 }
