@@ -129,6 +129,7 @@ export default {
     login () {
       console.log('Login')
       console.log(this.loginForm)
+      this.$router.push('/dashboard')
     },
     register () {
       console.log('Register')
