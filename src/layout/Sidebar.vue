@@ -10,6 +10,7 @@
       <v-list-tile
         v-for="item in items"
         :key="item.text"
+        :to="item.path"
       >
         <v-list-tile-action>
           <v-icon> {{ item.icon }}</v-icon>
@@ -31,17 +32,9 @@ export default {
     return {
       drawer: null,
       items: [
-        { icon: 'trending_up', text: 'Most Popular', action: 'popular' },
-        { icon: 'subscriptions', text: 'Subscrptions', action: 'subscriptions' }
+        { icon: 'trending_up', text: 'Most Popular', path: 'popular' },
+        { icon: 'subscriptions', text: 'Subscrptions', path: 'subscriptions' }
       ]
-    }
-  },
-  methods: {
-    popular () {
-      console.log('popular')
-    },
-    subscriptions () {
-      console.log('subscriptions')
     }
   }
 }
