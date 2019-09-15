@@ -1,5 +1,10 @@
 <template>
   <v-app id="login">
+    <v-progress-linear
+      indeterminate
+      color="cyan"
+      v-show="isLoading"
+    ></v-progress-linear>
     <v-container
       fluid
       fill-height
@@ -113,6 +118,7 @@ export default {
     return {
       active: null,
       isPassword: true,
+      isLoading: false,
       loginForm: {
         account: '',
         password: ''
@@ -129,7 +135,10 @@ export default {
     login () {
       console.log('Login')
       console.log(this.loginForm)
-      this.$router.push('/dashboard')
+      this.isLoading = true
+      setTimeout(() => {
+        this.$router.push('/dashboard')
+      }, 3000)
     },
     register () {
       console.log('Register')
